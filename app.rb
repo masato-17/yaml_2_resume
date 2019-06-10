@@ -1,6 +1,8 @@
 # coding: utf-8
 require 'sinatra'
 require 'sinatra/reloader' if development?
+require 'base64'
+require "tempfile"
 
 require './lib/cv_maker'
 require './lib/txt2yaml'
@@ -20,6 +22,17 @@ post '/create' do
   begin
     @data = YAML.load(params[:data_yml])
     @style = TXT2YAMLConverter.new.convert(params[:style_txt])
+
+    # TODO: detect file type
+    if !params[:photo_base64].nil?
+      # p params[:photo_base64]
+      path = nil
+      Tempfile.create("photo_base64") do |f|
+        f.write(Base64.decode64(params[:photo_base64]))
+        path = f.path
+      end
+      @data["photo"] = path
+    end
 
     if !params[:photo].nil?
       @photo = params[:photo][:tempfile]

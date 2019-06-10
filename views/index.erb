@@ -2,6 +2,7 @@
   <div class="container main-container">
     <form action="/create" method="post" onsubmit='return editorSave()' enctype="multipart/form-data">
       <input type="file" class="photo-area" id="photoInput" name="photo" accept="image/*">
+      <input type="hidden" id="photoInputBase64" name="photo_base64">
       <div class="columns">
         <div class="column is-half">
           <label class="label is-medium">

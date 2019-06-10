@@ -24,6 +24,12 @@
   border-bottom-left-radius: 5px;
 }
 
+#photoBtn.-dragover {
+  background-color: #00d1b2;
+  border-color: #00d1b2;
+  color: #fff;
+}
+
 @media screen and (min-width: 769px) {
   .error-container {
     min-height: calc(100vh - 250px)
