@@ -217,8 +217,8 @@ class CVMaker
     end
     put_string(caption_x, y, "訓練歴", font_size, font_face)
     y = y - dy
-    experience = @data["training"]
-    experience.each do |i|
+    training = @data["training"]
+    training.each do |i|
       year = i.fetch("year", "").to_s
       month = i.fetch("month", "").to_s
       put_string(year_x, y, year, font_size, font_face)
