@@ -215,6 +215,18 @@ class CVMaker
       put_string(value_x, y, i["value"].to_s, font_size, font_face)
       y = y - dy
     end
+    put_string(caption_x, y, "訓練歴", font_size, font_face)
+    y = y - dy
+    experience = @data["training"]
+    experience.each do |i|
+      year = i.fetch("year", "").to_s
+      month = i.fetch("month", "").to_s
+      put_string(year_x, y, year, font_size, font_face)
+      x = month_x - (month.size - 1) * font_size * 0.3
+      put_string(x, y, month, font_size, font_face)
+      put_string(value_x, y, i["value"].to_s, font_size, font_face)
+      y = y - dy
+    end
     put_string(ijo_x, y, "以上", font_size, font_face)
   end
 
